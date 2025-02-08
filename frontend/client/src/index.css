@@ -1,0 +1,102 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 1, 1) 0%,
+    rgba(4, 23, 56, 1) 49%,
+    rgba(9, 47, 115, 1) 100%,
+    rgba(231, 0, 255, 1) 100%
+  );
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.homepage {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    /* Opacity on background */
+      url("/images/loading-unloading-1-590x440-1__1_-removebg-preview.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding-top: 15em;
+  border-radius: 20px;
+  backdrop-filter: blur(1px);
+  color: white;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+  width: 100%; /* Full width */
+  height: 100vh;
+
+  max-width: 100%; /* Remove the maximum width limit */
+}
+.content h1 {
+  font-size: 3em;
+}
+.content h3 {
+  font-size: 1em;
+  font-weight: lighter;
+  font-family: arial;
+}
+.auth-links {
+  margin: 20px 0;
+}
+
+.button {
+  background-color: #cc73f8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+.button2 {
+  background-color: none;
+  color: #cc73f8;
+  border: 1px solid #cc73f8;
+  padding: 10px 20px;
+  margin: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: #b54fe0;
+}
+.button2:hover {
+  background-color: #b54fe0;
+}
+.success-stories,
+.services {
+  margin: 40px 0;
+}
+
+.customer-images,
+.service-images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cover {
+  height: 100vh;
+}
