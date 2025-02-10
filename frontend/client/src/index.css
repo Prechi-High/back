@@ -1,102 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Inter", sans-serif;
   text-align: center;
   margin: 0;
   padding: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 1, 1) 0%,
-    rgba(4, 23, 56, 1) 49%,
-    rgba(9, 47, 115, 1) 100%,
-    rgba(231, 0, 255, 1) 100%
-  );
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .homepage {
-  position: relative;
-  overflow: hidden;
+  position: fixed;
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    /* Opacity on background */
-      url("/images/loading-unloading-1-590x440-1__1_-removebg-preview.png");
-  background-size: contain;
+    url("https://shipnerdnews.com/wp-content/uploads/2023/05/port-operations-container-transport.jpg");
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .content {
   position: relative;
   z-index: 1;
-  padding-top: 15em;
-  border-radius: 20px;
-  backdrop-filter: blur(1px);
+  padding: 2rem;
+  border-radius: 0;
   color: white;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
-  width: 100%; /* Full width */
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: 0 0;
   height: 100vh;
-
-  max-width: 100%; /* Remove the maximum width limit */
+  animation: slideUp 0.8s ease-out forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+h3 {
+  text-align: center;
+  color: red;
 }
 .content h1 {
-  font-size: 3em;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  animation: slideUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+  line-height: 1.2;
+  text-align: center;
 }
+
 .content h3 {
-  font-size: 1em;
-  font-weight: lighter;
-  font-family: arial;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  animation: slideUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+  max-width: 600px;
+  line-height: 1.6;
 }
+
+.track-info {
+  font-size: 1.1rem;
+  color: #f1f1f1;
+  margin-bottom: 1rem;
+  animation: slideUp 0.8s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
 .auth-links {
-  margin: 20px 0;
+  margin: 2rem 0;
+  animation: slideUp 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+  display: flex;
+  gap: 1rem;
 }
 
 .button {
-  background-color: #cc73f8;
+  background-color: #b54fe0;
+  cursor: pointer;
   color: white;
   border: none;
-  padding: 10px 20px;
-  margin: 5px;
+  padding: 15px 40px;
+  margin: 0.5rem;
   text-decoration: none;
-  font-size: 16px;
-  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
   display: inline-block;
-  transition: background-color 0.3s ease;
-}
-.button2 {
-  background-color: none;
-  color: #cc73f8;
-  border: 1px solid #cc73f8;
-  padding: 10px 20px;
-  margin: 5px;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 5px;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-.button:hover {
-  background-color: #b54fe0;
-}
-.button2:hover {
-  background-color: #b54fe0;
-}
-.success-stories,
-.services {
-  margin: 40px 0;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.customer-images,
-.service-images {
+.button2 {
+  background-color: transparent;
+  cursor: pointer;
+  color: #b54fe0;
+  border: 2px solid #b54fe0;
+  padding: 15px 40px;
+  margin: 0.5rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.button:hover {
+  background-color: #642a7c;
+  transform: translateY(-2px);
+}
+
+.button2:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.success-stories {
+  margin: 3rem 0;
+  animation: slideUp 0.8s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+.customer-images {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
   flex-wrap: wrap;
+  padding: 1rem;
 }
+
+.customer-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.customer-image:hover {
+  transform: scale(1.1);
+}
+
+.customer-images span {
+  font-size: 1rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  margin-left: 1rem;
+  backdrop-filter: blur(5px);
+}
+
 .cover {
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+    width: 95%;
+    text-align: center;
+  }
+
+  .customer-images {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .customer-images span {
+    margin: 1rem 0 0 0;
+  }
+
+  .auth-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .button,
+  .button2 {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  .content h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .content h3 {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+  }
+}
+
+/* Loading blur effect for images */
+.blur-load {
+  background-size: cover;
+  background-position: center;
+}
+
+.blur-load.loaded > img {
+  opacity: 1;
+}
+
+.blur-load > img {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+/* input fields */
+.input {
+  padding: 1em 2em;
+  margin: 5px;
+  color: grey;
+  border-radius: 5px;
+}
+.subbtn {
+  padding: 1em 7em;
+  margin-top: 10px;
+  background-color: #b54fe0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.subbtn:hover {
+  background-color: #642a7c;
+  border: none;
+  border-radius: 0px;
+}
+.adminbtn:hover {
+  background-color: #642a7c;
+}
+.adminbtn {
+  background-color: #b54fe0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+.but {
+  color: #b54fe0;
+  text-decoration: none;
 }

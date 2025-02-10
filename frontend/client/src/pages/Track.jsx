@@ -54,15 +54,20 @@ export default function Track() {
   };
 
   return (
+    <div className="cover">
+    <div className="homepage">
+      <div className="content">
     <div>
+
       <h1>Track Your Package</h1>
       <input
         type="text"
         placeholder="Enter Tracking Number"
         value={trackingNumber}
+        className="input"
         onChange={(e) => setTrackingNumber(e.target.value)}
       />
-      <button onClick={handleTrack} disabled={loading}>
+      <button onClick={handleTrack} disabled={loading} className="button">
         {loading ? "Tracking..." : "Track"}
       </button>
 
@@ -134,8 +139,22 @@ export default function Track() {
               weight={4}
             />
           </MapContainer>
+
+          <section className="success-stories">
+         
+         <div className="customer-images">
+           <img src="customer1.jpg" alt="Customer 1" className="customer-image" />
+           <img src="customer2.jpg" alt="Customer 2" className="customer-image" />
+           <img src="customer3.jpg" alt="Customer 3" className="customer-image" />
+           <span>Over 2000+ Successful Shippings</span>
+         </div>
+       </section>
+      
         </div>
       )}
+    </div>
+    </div>
+    </div>
     </div>
   );
 }

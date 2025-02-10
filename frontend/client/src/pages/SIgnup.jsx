@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Signup() {
   const [userName, setUsername] = useState("");
@@ -19,11 +20,28 @@ export default function Signup() {
     }
   };
   return (
-    <form onSubmit={handleSignup}>
-      <input type="userName" onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-      <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-      <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Sign Up</button>
+   
+
+
+<div className="cover">
+<div className="homepage">
+  <div className="content">
+  <form onSubmit={handleSignup}>
+  <h1>Sign up</h1>
+      <input type="userName" onChange={(e) => setUsername(e.target.value)} placeholder="Username" className="input" /><br/>
+      <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="input"/><br/>
+      <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="input" /><br/>
+      <button type="submit" className="subbtn">Sign Up</button>
+
+      <div className="auth-links">
+           <p>have an account? <Link to="/login" className="but"> Login</Link> instead</p>
+        </div>
     </form>
+
+  
+  </div>
+</div>
+</div>
+
   );
 }

@@ -50,9 +50,12 @@ export default function AdminUsersPage() {
   };
 
   return (
+    <div className="cover">
+    <div className="homepage">
+      <div className="content">
     <div>
       <h1>Admin - User Management</h1>
-      <button onClick={() => navigate("/admin")}>Back to Dashboard</button>
+      <button onClick={() => navigate("/admin")} className="adminbtn">Back to Dashboard</button>
 
       {/* User Information Table */}
       <h2>User Information</h2>
@@ -70,7 +73,7 @@ export default function AdminUsersPage() {
               <td>{user.username}</td>
               <td>{user.email}</td>
               <td>
-                <button onClick={() => handleDeleteUser(user._id)} style={{ color: "red" }}>
+                <button onClick={() => handleDeleteUser(user._id)}  className="adminbtn">
                   Delete User
                 </button>
               </td>
@@ -115,6 +118,9 @@ export default function AdminUsersPage() {
           )}
         </tbody>
       </table>
+    </div>
+    </div>
+    </div>
     </div>
   );
 }

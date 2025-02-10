@@ -64,6 +64,9 @@ export default function AdminPage() {
   };
 
   return (
+    <div className="cover">
+    <div className="homepage">
+      <div className="content">
     <div>
       <h1>Admin Dashboard</h1>
       {isAdmin ? (
@@ -71,9 +74,9 @@ export default function AdminPage() {
           <p>Welcome, Admin!</p>
 
           {/* Buttons Row - "View Users" and "Create Tracker" */}
-          <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
-            <button onClick={() => navigate("/admin/users")}>View Users</button>
-            <button onClick={() => setShowTrackerForm(!showTrackerForm)}>
+          <div className="auth-links2">
+            <button onClick={() => navigate("/admin/users")} className="button">View Users</button>
+            <button onClick={() => setShowTrackerForm(!showTrackerForm)} className="button2">
               {showTrackerForm ? "Hide Tracker Form" : "Create Tracker"}
             </button>
           </div>
@@ -83,61 +86,68 @@ export default function AdminPage() {
             <div>
               <h2>Add Tracking Information</h2>
               <form onSubmit={handleSubmit}>
-                <label>Courier Name:</label>
+                
                 <input
                   type="text"
                   value={courier}
+                  className="input"
                   onChange={(e) => setCourier(e.target.value)}
                   required
-                />
-                <label>Tracking Number:</label>
-                <input
+                /><label>Courier Name:</label><br/>
+                
+                 <input
                   type="text"
                   value={trackingNumber}
+                    className="input"
                   onChange={(e) => setTrackingNumber(e.target.value)}
                   required
-                />
+                /><label>Tracking Number:</label><br/>
 
-                <label>Latitude:</label>
+               
                 <input
                   type="text"
                   value={latitude}
+                    className="input"
                   onChange={(e) => setLatitude(e.target.value)}
                   required
-                />
+                /> <label>Latitude:</label><br/>
 
-                <label>Longitude:</label>
+               
                 <input
                   type="text"
                   value={longitude}
+                    className="input"
                   onChange={(e) => setLongitude(e.target.value)}
                   required
-                />
-                <label>Start location:</label>
+                /> <label>Longitude:</label><br/>
+               
                 <input
                   type="text"
                   value={from}
+                    className="input"
                   onChange={(e) => setFrom(e.target.value)}
                   required
-                />
+                /> <label>Start location:</label><br/>
 
-                <label>Destination:</label>
+               
                 <input
                   type="text"
+                    className="input"
                   value={destination}
                   onChange={(e) => setDestination(e.target.value)}
                   required
-                />
+                /><label>Destination:</label><br/>
 
-                <label>Current location:</label>
+               
                 <input
                   type="text"
                   value={current}
+                    className="input"
                   onChange={(e) => setCurrent(e.target.value)}
                   required
-                />
+                /><label>Current location:</label><br/>
 
-                <button type="submit">Add Tracking Info</button>
+                <button type="submit" className="button">Add Tracking Info</button>
               </form>
 
               {message && <p>{message}</p>}
@@ -152,6 +162,9 @@ export default function AdminPage() {
       ) : (
         <p>Unauthorized access</p>
       )}
+    </div>
+    </div>
+    </div>
     </div>
   );
 }

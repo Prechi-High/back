@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 export default function Login() {
@@ -40,24 +40,41 @@ export default function Login() {
       console.error("Login Error:", error);
       setError(error.message);
     }
-  };
+  }
+  
+  ;
+  
   
   return (
-    <div>
+  
+
+<div className="cover">
+<div className="homepage">
+  <div className="content">
+  <div>
       <h1>Login</h1>
       <form onSubmit= {handleLogin} >
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" required />
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" required className="input"/><br/>
         <input
   type="password"
   placeholder="Enter password"
   value={password}
+  className="input"
   onChange={(e) => setPassword(e.target.value)}
   autoComplete="current-password"  // ✅ Fixes Warning
-/>
+/><br/>
 
-        <button type="submit">Login</button>
+        <button type="submit" className="subbtn">Login</button>
+        <div className="auth-links">
+           <p>New to Trackify <Link to="/signup" className="but"> Sign up</Link> instead</p>
+        </div>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
+
+    
+  </div>
+</div>
+</div>
   );
 }

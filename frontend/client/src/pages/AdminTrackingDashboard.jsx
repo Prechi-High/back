@@ -46,7 +46,8 @@ const AdminTrackingDashboard = () => {
 
   return (
     <div>
-      <h3> Product Tracking </h3>
+      
+      <p style={{fontSize:30}}>Product Tracking</p>
       <table border="1">
         <thead>
           <tr>
@@ -76,10 +77,10 @@ const AdminTrackingDashboard = () => {
                     <input name="currentLongitude" value={formData.currentLongitude} onChange={handleChange}  placeholder="Current longitude"/>
                     <input name="destinationLatitude" value={formData.destinationLatitude} onChange={handleChange}  placeholder="Destination latitute"/>
                     <input name="destinationLongitude" value={formData.destinationLongitude} onChange={handleChange}  placeholder="Destination longitude"/>
-                    <button onClick={handleSave}>Save</button>
+                    <button onClick={handleSave} className="adminbtn">Save</button>
                   </>
                 ) : (
-                  <button onClick={() => handleEdit(tracking)}>Edit</button>
+                  <button onClick={() => handleEdit(tracking)} className="adminbtn">Edit</button>
                 )}
               </td>
             </tr>
