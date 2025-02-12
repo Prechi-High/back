@@ -1,6 +1,4 @@
-{"resolutions": {
-  "react/jsx-runtime": "18.2.0"
-},
+{
   "name": "client",
   "private": true,
   "version": "0.0.0",
@@ -30,6 +28,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
+    "rollup": "^4.34.6",
     "vite": "^6.0.5"
   }
 }
