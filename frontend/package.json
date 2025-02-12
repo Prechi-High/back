@@ -1,4 +1,6 @@
-{
+{"resolutions": {
+  "react/jsx-runtime": "18.2.0"
+},
   "name": "client",
   "private": true,
   "version": "0.0.0",
