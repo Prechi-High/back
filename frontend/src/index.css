@@ -68,7 +68,6 @@ body {
 }
 h3 {
   text-align: center;
-  color: red;
 }
 .content h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
