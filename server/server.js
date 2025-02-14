@@ -8,6 +8,7 @@ import Tracking from "./models/Tracking.js"; // ✅ Import model instead of rede
 
 
 const app = express();
+const port = process.env.PORT
 app.use(express.json());
 app.use(cors({ origin: 'https://trackifycourier-website.vercel.app' }));
 
@@ -21,4 +22,4 @@ mongoose.connect("mongodb+srv://highprechi:highprechi@cluster0.2fpf5.mongodb.net
   .catch((err) => console.error("❌ MongoDB Atlas Error:", err));
 
 // Start Server
-app.listen(process.env.PORT, () => console.log("🚀 Server running "));
+app.listen(port, () => console.log(`🚀 Server running on port ${port}`));
