@@ -1,0 +1,24 @@
+{
+  "routes":[
+    {
+      "src":"/",
+      "des":"/"
+    },
+     {
+      "src":"/track",
+      "des":"/track"
+    },
+      {
+      "src":"/login",
+      "des":"/login"
+    },
+     {
+      "src":"/signup",
+      "des":"/signup"
+    },
+     {
+      "src":"/admin",
+      "des":"/admin"
+    }
+  ]
+}
