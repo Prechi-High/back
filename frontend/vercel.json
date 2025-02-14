@@ -1,9 +1,9 @@
 {
   "rewrites":[
-    {
-      "src":"/",
-      "des":"/"
-    },
+    
+     
+
+        {"source": "/(.*)", "destination": "/"},
      {
       "src":"/track",
       "des":"/track"
