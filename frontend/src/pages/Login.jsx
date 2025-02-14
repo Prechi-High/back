@@ -12,7 +12,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://trackifycourier-website.vercel.app/api/auth/login", {
+      const response = await fetch("https://courier-website-backend.vercel.app/auth/login", {
 
         method: "POST",
         headers: {
