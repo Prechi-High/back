@@ -10,7 +10,7 @@ import Tracking from "./models/Tracking.js"; // ✅ Import model instead of rede
 const app = express();
 const port = process.env.PORT || 4000;
 app.use(express.json());
-app.use(cors({ origin: 'https://trackifycourier-website.vercel.app' }));
+app.use(cors({ origin: 'http://localhost:4000' , methods:["GET" , "POST"]}));
 
 app.use("/auth", authRoutes);
 app.use("/track", trackingRoutes);
