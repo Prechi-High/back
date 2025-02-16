@@ -13,7 +13,7 @@ const ADMIN_PASSWORD = "p12345";
 // Signup
 router.post("/signup", async (req, res) => {
 
-  export default function handler(req, res) {
+ const handler(req, res) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://trackifycourier-website.vercel.app');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
