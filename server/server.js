@@ -13,6 +13,7 @@ app.use(express.json());
 const corsOptions = {
   origin: 'https://trackifycourier-website.vercel.app', // Allow requests from this domain
   methods: 'GET,POST,PUT,DELETE', // Allow specific HTTP methods
+  allowedHeaders: 'Content-Type,Authorization', // Specify allowed headers
 };
 
 app.use(cors(corsOptions));
