@@ -191,11 +191,7 @@ router.put("/api/admin/tracking/:trackingNumber", async (req, res) => {
  */
 router.post("/api/tracking", async (req, res) => {
   try {
-    const { userId, trackingNumber, courier, from, current, destination, currentLatitude, currentLongitude, destinationLatitude, destinationLongitude } = req.body;
-
-    if (!userId) {
-      return res.status(400).json({ message: "User ID is required." });
-    }
+    const { trackingNumber, courier, from, current, destination, longitude,latitude } = req.body;
 
     const tracking = new Tracking({
       trackingNumber,
@@ -203,15 +199,11 @@ router.post("/api/tracking", async (req, res) => {
       from,
       current,
       destination,
-      currentLatitude,
-      currentLongitude,
-      destinationLatitude,
-      destinationLongitude,
-      user: userId,
+      latitude,
+      longitude,
     });
 
     await tracking.save();
-    await User.findByIdAndUpdate(userId, { $push: { tracking: tracking._id } });
 
     res.status(201).json({ message: "Tracking info added successfully!" });
   } catch (error) {
