@@ -16,7 +16,7 @@ const corsOptions = {
   allowedHeaders: 'Content-Type,Authorization', // Specify allowed headers
 };
 
-app.use(cors(corpsOptions));
+app.use(cors(corsOptions));
 
 app.use("/auth", authRoutes);
 app.use("/track", trackingRoutes);
