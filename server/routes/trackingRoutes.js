@@ -191,7 +191,10 @@ router.put("/api/admin/tracking/:trackingNumber", async (req, res) => {
  */
 router.post("/api/tracking", async (req, res) => {
   try {
-    const { trackingNumber, courier, from, current, destination, longitude,latitude } = req.body;
+    const { trackingNumber, courier, from, current, destination, longitude,latitude , currentLatitude,
+      currentLongitude,
+      destinationLatitude,
+      destinationLongitude} = req.body;
 
     const tracking = new Tracking({
       trackingNumber,
@@ -201,6 +204,10 @@ router.post("/api/tracking", async (req, res) => {
       destination,
       latitude,
       longitude,
+      currentLatitude,
+      currentLongitude,
+      destinationLatitude,
+      destinationLongitude
     });
 
     await tracking.save();
