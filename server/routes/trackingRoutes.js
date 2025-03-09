@@ -224,7 +224,7 @@ router.post("/api/tracking", async (req, res) => {
       currentLatitude,
       currentLongitude,
       destinationLatitude,
-      destinationLongitude
+      destinationLongitude,
       distanceRemaining
     });
 
