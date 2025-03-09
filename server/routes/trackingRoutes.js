@@ -171,21 +171,24 @@ router.put("/api/admin/tracking/:trackingNumber", async (req, res) => {
       return res.status(404).json({ message: "Tracking not found." });
     }
 
-    // Update tracking record
-    tracking.current = current;
-    tracking.currentLatitude = currentLatitude;
-    tracking.currentLongitude = currentLongitude;
-    tracking.destinationLatitude = destinationLatitude;
-    tracking.destinationLongitude = destinationLongitude;
 
-    // Recalculate distance
-    tracking.distanceRemaining = calculateDistance(
+     // Recalculate distance
+     const distanceRemaining = calculateDistance(
       currentLatitude,
       currentLongitude,
       destinationLatitude,
       destinationLongitude
     ) + " miles away";
 
+
+    // Update tracking record
+    tracking.current = current;
+    tracking.currentLatitude = currentLatitude;
+    tracking.currentLongitude = currentLongitude;
+    tracking.destinationLatitude = destinationLatitude;
+    tracking.destinationLongitude = destinationLongitude;
+    tracking.distanceRemaining = distanceRemaining;
+   
     await tracking.save();
     res.json({ message: "Tracking updated successfully!", tracking });
   } catch (error) {
@@ -222,6 +225,7 @@ router.post("/api/tracking", async (req, res) => {
       currentLongitude,
       destinationLatitude,
       destinationLongitude
+      distanceRemaining
     });
 
    
