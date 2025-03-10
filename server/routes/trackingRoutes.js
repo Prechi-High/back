@@ -118,16 +118,16 @@ const calculateDistance = (currentLat, currentLng, destLat, destLng) => {
 /**
  * UPDATE tracking info (For Users)
  */
-router.put("/api/tracking/update/:trackingNumber", async (req, res) => {
-  try {
-    const { trackingNumber } = req.params;
-    const { newCurrent, newLatitude, newLongitude } = req.body;
+// router.put("/api/tracking/update/:trackingNumber", async (req, res) => {
+//   try {
+//     const { trackingNumber } = req.params;
+//     const { newCurrent, newLatitude, newLongitude } = req.body;
 
-    const tracking = await Tracking.findOne({ trackingNumber });
+//     const tracking = await Tracking.findOne({ trackingNumber });
 
-    if (!tracking) {
-      return res.status(404).json({ message: "Tracking number not found." });
-    }
+//     if (!tracking) {
+//       return res.status(404).json({ message: "Tracking number not found." });
+//     }
 
       // // Recalculate distance
       // tracking.distanceRemaining = calculateDistance(
@@ -137,25 +137,25 @@ router.put("/api/tracking/update/:trackingNumber", async (req, res) => {
       //   destinationLongitude
       // ) + " miles away";
     // Calculate remaining distance
-    const distanceRemaining = calculateDistance(
-      newLatitude,
-      newLongitude,
-      tracking.destinationLatitude,
-      tracking.destinationLongitude
-    );
+//     const distanceRemaining = calculateDistance(
+//       newLatitude,
+//       newLongitude,
+//       tracking.destinationLatitude,
+//       tracking.destinationLongitude
+//     );
 
-    // Update tracking info
-    tracking.current = newCurrent;
-    tracking.currentLatitude = newLatitude;
-    tracking.currentLongitude = newLongitude;
-    tracking.distanceRemaining = `${distanceRemaining} miles away`;
+//     // Update tracking info
+//     tracking.current = newCurrent;
+//     tracking.currentLatitude = newLatitude;
+//     tracking.currentLongitude = newLongitude;
+//     tracking.distanceRemaining = `${distanceRemaining} miles away`;
 
-    await tracking.save();
-    res.json({ message: "Tracking updated successfully!", tracking });
-  } catch (error) {
-    res.status(500).json({ message: "Error updating tracking info." });
-  }
-});
+//     await tracking.save();
+//     res.json({ message: "Tracking updated successfully!", tracking });
+//   } catch (error) {
+//     res.status(500).json({ message: "Error updating tracking info." });
+//   }
+// });
 
 /**
  * UPDATE tracking info (Admin Only)
