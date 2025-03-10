@@ -160,41 +160,41 @@ router.put("/api/tracking/update/:trackingNumber", async (req, res) => {
 /**
  * UPDATE tracking info (Admin Only)
  */
-// router.put("/api/admin/tracking/:trackingNumber", async (req, res) => {
-//   try {
-//     const { trackingNumber } = req.params;
-//     const { current, currentLatitude, currentLongitude, destinationLatitude, destinationLongitude } = req.body;
+router.put("/api/admin/tracking/:trackingNumber", async (req, res) => {
+  try {
+    const { trackingNumber } = req.params;
+    const { current, currentLatitude, currentLongitude, destinationLatitude, destinationLongitude } = req.body;
 
-//     const tracking = await Tracking.findOne({ trackingNumber });
+    const tracking = await Tracking.findOne({ trackingNumber });
 
-//     if (!tracking) {
-//       return res.status(404).json({ message: "Tracking not found." });
-//     }
-
-
-//      // Recalculate distance
-//      const distanceRemaining = calculateDistance(
-//       currentLatitude,
-//       currentLongitude,
-//       destinationLatitude,
-//       destinationLongitude
-//     ) + " miles away";
+    if (!tracking) {
+      return res.status(404).json({ message: "Tracking not found." });
+    }
 
 
-//     // Update tracking record
-//     tracking.current = current;
-//     tracking.currentLatitude = currentLatitude;
-//     tracking.currentLongitude = currentLongitude;
-//     tracking.destinationLatitude = destinationLatitude;
-//     tracking.destinationLongitude = destinationLongitude;
-//     tracking.distanceRemaining = distanceRemaining;
+     // Recalculate distance
+     const distanceRemaining = calculateDistance(
+      currentLatitude,
+      currentLongitude,
+      destinationLatitude,
+      destinationLongitude
+    ) + " miles away";
+
+
+    // Update tracking record
+    tracking.current = current;
+    tracking.currentLatitude = currentLatitude;
+    tracking.currentLongitude = currentLongitude;
+    tracking.destinationLatitude = destinationLatitude;
+    tracking.destinationLongitude = destinationLongitude;
+    tracking.distanceRemaining = distanceRemaining;
    
-//     await tracking.save();
-//     res.json({ message: "Tracking updated successfully!", tracking });
-//   } catch (error) {
-//     res.status(500).json({ message: "Error updating tracking info." });
-//   }
-// });
+    await tracking.save();
+    res.json({ message: "Tracking updated successfully!", tracking });
+  } catch (error) {
+    res.status(500).json({ message: "Error updating tracking info." });
+  }
+});
 
 /**
  * CREATE tracking info (Admin Only)
