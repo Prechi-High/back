@@ -121,7 +121,7 @@ const calculateDistance = (currentLat, currentLng, destLat, destLng) => {
 router.put("/api/tracking/update/:trackingNumber", async (req, res) => {
   try {
     const { trackingNumber } = req.params;
-    const { newCurrent, newLatitude, newLongitude } = req.body;
+    const { newCurrent, newLatitude, newLongitude  , destinationLatitude, destinationLongitude} = req.body;
 
     const tracking = await Tracking.findOne({ trackingNumber });
 
