@@ -108,6 +108,10 @@ router.get("/api/admin/trackings", async (req, res) => {
  * Calculate distance using Haversine formula
  */
 const calculateDistance = (currentLat, currentLng, destLat, destLng) => {
+  if (!currentLat || !currentLng || !destLat || !destLng) {
+    return "N/A"; // Return "N/A" if any coordinate is missing
+  }
+
   const current = { latitude: parseFloat(currentLat), longitude: parseFloat(currentLng) };
   const destination = { latitude: parseFloat(destLat), longitude: parseFloat(destLng) };
 
@@ -115,13 +119,14 @@ const calculateDistance = (currentLat, currentLng, destLat, destLng) => {
   return (distanceInMeters / 1609.34).toFixed(2); // Convert meters to miles
 };
 
+
 /**
  * UPDATE tracking info (For Users)
  */
 router.put("/api/tracking/update/:trackingNumber", async (req, res) => {
   try {
     const { trackingNumber } = req.params;
-    const { newCurrent, newLatitude, newLongitude  , destinationLatitude, destinationLongitude} = req.body;
+    const { newCurrent, newLatitude, newLongitude } = req.body;
 
     const tracking = await Tracking.findOne({ trackingNumber });
 
@@ -129,14 +134,14 @@ router.put("/api/tracking/update/:trackingNumber", async (req, res) => {
       return res.status(404).json({ message: "Tracking number not found." });
     }
 
-      // Recalculate distance
-      tracking.distanceRemaining = calculateDistance(
-        currentLatitude,
-        currentLongitude,
-        destinationLatitude,
-        destinationLongitude
-      ) + " miles away";
-    Calculate remaining distance
+      // // Recalculate distance
+      // tracking.distanceRemaining = calculateDistance(
+      //   currentLatitude,
+      //   currentLongitude,
+      //   destinationLatitude,
+      //   destinationLongitude
+      // ) + " miles away";
+    // Calculate remaining distance
     const distanceRemaining = calculateDistance(
       newLatitude,
       newLongitude,
@@ -199,41 +204,35 @@ router.put("/api/admin/tracking/:trackingNumber", async (req, res) => {
 /**
  * CREATE tracking info (Admin Only)
  */
-router.post("/api/tracking", async (req, res) => {
+outer.post("/api/tracking", async (req, res) => {
   try {
-    const { trackingNumber, courier, from, current, destination, longitude,latitude , currentLatitude,
-      currentLongitude,
-      destinationLatitude,
-      destinationLongitude} = req.body;
-  // Calculate initial distance
-  const distanceRemaining = calculateDistance(
-    currentLatitude,
-    currentLongitude,
-    destinationLatitude,
-    destinationLongitude
-  ) + " miles away";
-  
-    const tracking = new Tracking({
-      trackingNumber,
-      courier,
-      from,
-      current,
-      destination,
-      latitude,
-      longitude,
+    const { 
+      trackingNumber, courier, from, current, destination, 
+      currentLatitude, currentLongitude, destinationLatitude, destinationLongitude 
+    } = req.body;
+
+    if (!currentLatitude || !currentLongitude || !destinationLatitude || !destinationLongitude) {
+      return res.status(400).json({ message: "Missing latitude/longitude for distance calculation." });
+    }
+
+    // Calculate the initial distance
+    const distanceRemaining = `${calculateDistance(
       currentLatitude,
       currentLongitude,
       destinationLatitude,
-      destinationLongitude,
-      distanceRemaining,
+      destinationLongitude
+    )} miles away`;
+
+    const tracking = new Tracking({
+      trackingNumber, courier, from, current, destination,
+      currentLatitude, currentLongitude, destinationLatitude, destinationLongitude,
+      distanceRemaining
     });
 
-   
-
     await tracking.save();
-
-    res.status(201).json({ message: "Tracking info added successfully!" });
+    res.status(201).json({ message: "Tracking info added successfully!", tracking });
   } catch (error) {
+    console.error("Error saving tracking info:", error);
     res.status(500).json({ message: "Error saving tracking info." });
   }
 });
