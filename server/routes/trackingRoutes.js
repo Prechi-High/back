@@ -167,7 +167,7 @@ router.put("/api/admin/tracking/:trackingNumber", async (req, res) => {
     console.log("Received Update Request for:", trackingNumber);
     console.log("Update Data:", req.body);
 
-    const tracking = await Tracking.findOne({ trackingNumber });
+    const tracking = await Tracking.findOne({ trackingNumber: String(trackingNumber) });
 
     if (!tracking) {
       console.log("Tracking not found!");
