@@ -159,17 +159,18 @@ router.put("/api/tracking/update/:trackingNumber", async (req, res) => {
 
 
 
-/**
- * UPDATE tracking info (Admin Only)
- */
 router.put("/api/admin/tracking/:trackingNumber", async (req, res) => {
   try {
     const { trackingNumber } = req.params;
     const { current, currentLatitude, currentLongitude, destinationLatitude, destinationLongitude } = req.body;
 
+    console.log("Received Update Request for:", trackingNumber);
+    console.log("Update Data:", req.body);
+
     const tracking = await Tracking.findOne({ trackingNumber });
 
     if (!tracking) {
+      console.log("Tracking not found!");
       return res.status(404).json({ message: "Tracking not found." });
     }
 
@@ -189,11 +190,15 @@ router.put("/api/admin/tracking/:trackingNumber", async (req, res) => {
     ) + " miles away";
 
     await tracking.save();
+    console.log("Tracking Updated Successfully:", tracking);
+
     res.json({ message: "Tracking updated successfully!", tracking });
   } catch (error) {
+    console.error("Error updating tracking info:", error);
     res.status(500).json({ message: "Error updating tracking info." });
   }
 });
+
 /**
  * CREATE tracking info (Admin Only)
  */
