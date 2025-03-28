@@ -63,10 +63,10 @@ const transporter = nodemailer.createTransport({
 
 // Email Route
 router.post("/send-email", async (req, res) => {
-  const { to, subject, message } = req.body;
+  const { to, subject, message , trackingNumber, amount,dueDate} = req.body;
 
 
-
+x
    // UPS Email Template
   
 
@@ -108,7 +108,7 @@ router.post("/send-email", async (req, res) => {
                   .header {
                       background-color: #d8a407;
                       padding: 15px;
-                      color: black;
+                      color: white;
                       font-size: 20px;
                       font-weight: bold;
                       border-radius: 10px 10px 0 0;
@@ -156,33 +156,36 @@ router.post("/send-email", async (req, res) => {
                   </div>
        
                   <div class="content">
-                      <p>Dear Customer,</p>
-                      <p>We hope you are doing well. Your shipment <strong>(Tracking No: )</strong> is ready for delivery. However, we require payment confirmation before proceeding.</p>
-                      
-                      <p><strong>Payment Details:</strong></p>
-                      <ul>
-                          <li><strong>Amount Due:</strong> </li>
-                          <li><strong>Due Date:</strong> </li>
-                          <li><strong>Payment Method:</strong> Bank Transfer, Credit Card, or PayPal</li>
-                      </ul>
-       
-                      <p>To complete your payment and ensure timely delivery, please click the button below:</p>
-                      <a href="" class="cta-button">Make Payment Now</a>
-       
-                      <p>If you've already paid, kindly ignore this message. Otherwise, please complete the payment to avoid any delays.</p>
-       
-                      <p>For any questions, contact our support team at <a href="mailto:support@ups.com">support@ups.com</a>.</p>
-       
-                      <p>Thank you for choosing <strong>UPS</strong>.</p>
-       
-                      <p>Best regards,</p>
-                      <p><strong>UPS Customer Support</strong><br>
-                      📞 +1-800-742-5877 | ✉ support@ups.com</p>
-                  </div>
-       
-                  <div class="footer">
-                      &copy; ${new Date().getFullYear()} UPS. All Rights Reserved.
-                  </div>
+                     <p>Dear Customer,</p>
+            <p>We regret to inform you that your package <strong>(Tracking No: ${trackingNumber})</strong> has been temporarily <strong>seized</strong> and placed on hold at our facility due to outstanding customs and processing fees.</p>
+
+            <p><strong>Payment Required for Release:</strong></p>
+            <ul>
+                <li><strong>Outstanding Amount:</strong> $${amount}</li>
+                <li><strong>Due Date:</strong> ${dueDate}</li>
+                <li><strong>Reason for Hold:</strong> Unpaid clearance and delivery fees</li>
+                <li><strong>Payment Methods:</strong> Bank Transfer, Credit Card, or PayPal</li>
+            </ul>
+
+            <p>Your shipment will remain on hold until the required payment is received. Failure to complete payment by the due date may result in **additional storage fees or return of the package** to the sender.</p>
+
+            <p>To **release your package and schedule immediate delivery**, please click the button below:</p>
+            // <a href="${paymentLink}" class="cta-button">🔒 Secure Payment</a>
+
+            <p>If you have already made payment, please disregard this notice. Otherwise, we strongly advise you to complete payment as soon as possible to avoid further delays.</p>
+
+            <p>For further assistance, contact our support team at <a href="mailto:support@ups.com">support@ups.com</a> or call 📞 +1-800-742-5877.</p>
+
+            <p>Thank you for your prompt attention to this matter.</p>
+
+            <p>Best regards,</p>
+            <p><strong>UPS Customer Support</strong><br>
+            📞 +1-800-742-5877 | ✉ support@ups.com</p>
+        </div>
+
+        <div class="footer">
+            &copy; ${new Date().getFullYear()} UPS. All Rights Reserved.
+        </div>
               </div>
        
           </body>
