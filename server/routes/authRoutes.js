@@ -106,7 +106,7 @@ router.post("/send-email", async (req, res) => {
                       max-width: 150px;
                   }
                   .header {
-                      background-color: #e0aa06;
+                      background-color: #d8a407;
                       padding: 15px;
                       color: black;
                       font-size: 20px;
@@ -148,7 +148,7 @@ router.post("/send-email", async (req, res) => {
               <div class="container">
                   <!-- UPS Logo -->
                   <div class="logo">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/UPS_Logo_Shield_2017.svg/320px-UPS_Logo_Shield_2017.svg.png" alt="UPS Logo" width="150">
+                      <img src="https://files.fm/f/6ppxrqz8ae" alt="UPS Logo" width="150">
                   </div>
        
                   <div class="header">
