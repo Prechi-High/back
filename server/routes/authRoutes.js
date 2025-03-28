@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import axios from "axios";
 import nodemailer from "nodemailer";
+import image from "../image/ups.jpg"
 
 const router = express.Router();
 const SECRET_KEY = "your_secret_key";
@@ -148,7 +149,7 @@ router.post("/send-email", async (req, res) => {
               <div class="container">
                   <!-- UPS Logo -->
                   <div class="logo">
-                      <img src="https://postimg.cc/F1NKXk6d" alt="UPS Logo" width="150">
+                     <img src="cid:ups" alt="UPS Logo" width="150">
                   </div>
        
                   <div class="header">
@@ -190,7 +191,14 @@ router.post("/send-email", async (req, res) => {
        
           </body>
           </html>
-          ` // Email Body
+          ` ,// Email Body
+          attachments: [
+            {
+                filename: "ups_logo.png", // Attach the image file
+                path: "../image/ups.jpg", // Path to the image in your project
+                cid: "ups", // Content ID (used in the <img> tag)
+            },
+        ],
       });
 
       res.status(200).json({ success: true, info });
