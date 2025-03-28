@@ -70,7 +70,45 @@ router.post("/send-email", async (req, res) => {
           from: "highprechi@gmail.com", // Sender
           to, // Recipient
           subject, // Email Subject
-          html: `<p>${message}</p>`, // Email Body
+          html: `<p>${message}</p>
+          
+             <div class="container">
+        <div class="header">
+            <a href="https://www.ups.com/webassets/icons/logo.svg"> </a> [Your Company Name] – Payment Required
+        </div>
+        <div class="content">
+            <p>Dear <strong>[Client's Name]</strong>,</p>
+            <p>We hope you are doing well. We would like to inform you that your shipment **(Tracking No: [Tracking Number])** is ready for delivery. However, we require payment confirmation before proceeding with the final delivery.</p>
+            
+            <p><strong>Payment Details:</strong></p>
+            <ul>
+                <li><strong>Invoice No:</strong> [Invoice Number]</li>
+                <li><strong>Amount Due:</strong> $[Amount]</li>
+                <li><strong>Due Date:</strong> [Due Date]</li>
+                <li><strong>Payment Method:</strong> Bank Transfer, Credit Card, or PayPal</li>
+            </ul>
+
+            <p>To complete your payment and ensure timely delivery, please click the button below:</p>
+            <a href="[Payment Link]" class="cta-button">Make Payment Now</a>
+
+            <p>If you have already made the payment, kindly ignore this message. Otherwise, please complete the payment to avoid any delays.</p>
+
+            <p>For any questions, feel free to contact our support team at <a href="mailto:support@yourcompany.com">support@yourcompany.com</a>.</p>
+
+            <p>Thank you for choosing <strong>[Your Company Name]</strong>.</p>
+
+            <p>Best regards,</p>
+            <p><strong>[Your Company Name]</strong><br>
+            📞 +[Your Phone Number] | ✉ support@yourcompany.com</p>
+        </div>
+
+        <div class="footer">
+            &copy; [Year] [Your Company Name]. All Rights Reserved.
+        </div>
+    </div>
+          
+          
+          `, // Email Body
       });
 
       res.status(200).json({ success: true, info });
