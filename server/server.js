@@ -4,6 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import authRoutes from "./routes/authRoutes.js";
 import trackingRoutes from "./routes/trackingRoutes.js";
+import emailRoutes from "./routes/emailRouter.js";
 import Tracking from "./models/Tracking.js"; // ✅ Import model instead of redefining it
 
 
@@ -19,6 +20,7 @@ const corsOptions = {
 app.use(cors());
 
 app.use("/auth", authRoutes);
+app.use("/email", emailRoutes);
 app.use("/track", trackingRoutes);
 
 

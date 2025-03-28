@@ -8,7 +8,7 @@ const router = express.Router();
 const RESEND_API_KEY = "re_Gmg3QRNr_BHcNhhY1RJ9qqkCui9DE6ZTi"
 
 // Email sending endpoint
-app.post("/send-email", async (req, res) => {
+router.post("/send-email", async (req, res) => {
     const { to, subject, message } = req.body;
     
     try {
