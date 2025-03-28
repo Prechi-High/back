@@ -3,10 +3,11 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import axios from "axios";
+import nodemailer from "nodemailer";
 
 const router = express.Router();
 const SECRET_KEY = "your_secret_key";
-const RESEND_API_KEY = "re_Gmg3QRNr_BHcNhhY1RJ9qqkCui9DE6ZTi"
+
 
 // Admin Credentials (Ensure it's in the DB)
 const ADMIN_EMAIL = "precious@gmail.com";
@@ -51,24 +52,28 @@ router.post("/login", async (req, res) => {
   res.json({ token, isAdmin: user.isAdmin });  // ✅ Ensure `isAdmin` is returned
 });
 
-// Email sending endpoint
+// Nodemailer Transporter (Uses Gmail)
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+      user:"highprechi@gmail.com", // Your Gmail
+      pass:"lgzj opqe ihaj mzco", // Your App Password
+  },
+});
+
+// Email Route
 router.post("/send-email", async (req, res) => {
   const { to, subject, message } = req.body;
-  
+
   try {
-      const response = await axios.post("https://api.resend.com/emails", {
-          from: "highprechi@gmail.com", // Set up in Resend
-          to,
-          subject,
-          html: `<p>${message}</p>`
-      }, {
-          headers: {
-              "Authorization": `Bearer ${RESEND_API_KEY}`,
-              "Content-Type": "application/json"
-          }
+      const info = await transporter.sendMail({
+          from: "highprechi@gmail.com", // Sender
+          to, // Recipient
+          subject, // Email Subject
+          html: `<p>${message}</p>`, // Email Body
       });
-      
-      res.status(200).json({ success: true, data: response.data });
+
+      res.status(200).json({ success: true, info });
   } catch (error) {
       res.status(500).json({ success: false, error: error.message });
   }
