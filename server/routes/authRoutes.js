@@ -122,7 +122,7 @@ router.post("/send-email", async (req, res) => {
                   .cta-button {
                       display: block;
                       width: 200px;
-                      background-color: #004aad;
+                      background-color: #d8a407;
                       color: white;
                       text-align: center;
                       padding: 10px;
@@ -133,7 +133,7 @@ router.post("/send-email", async (req, res) => {
                       font-weight: bold;
                   }
                   .cta-button:hover {
-                      background-color: #003580;
+                      background-color: #d8a407;
                   }
                   .footer {
                       text-align: center;
@@ -148,11 +148,11 @@ router.post("/send-email", async (req, res) => {
               <div class="container">
                   <!-- UPS Logo -->
                   <div class="logo">
-                     
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/UPS_Logo_Shield_2017.svg/320px-UPS_Logo_Shield_2017.svg.png" alt="UPS Logo" width="150">
                   </div>
        
                   <div class="header">
-                       <img src="https://www.ups.com/webassets/icons/logo.svg" alt="UPS Logo"> UPS Shipping – Payment Required
+                      UPS Shipping – Payment Required
                   </div>
        
                   <div class="content">
