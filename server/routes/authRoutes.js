@@ -4,10 +4,18 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import axios from "axios";
 import nodemailer from "nodemailer";
-import image from "../image/ups.jpg"
 
+
+import path from "path";
+import { fileURLToPath } from "url";
 const router = express.Router();
 const SECRET_KEY = "your_secret_key";
+
+
+
+// Get absolute path handling
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 // Admin Credentials (Ensure it's in the DB)
@@ -194,11 +202,11 @@ router.post("/send-email", async (req, res) => {
           ` ,// Email Body
           attachments: [
             {
-                filename: "ups.jpg", // Attach the image file
-                path: "./image/ups.jpg", // Path to the image in your project
-                cid: "ups", // Content ID (used in the <img> tag)
+              filename: "ups.jpg",
+              path: path.join(__dirname, "ups.jpg"), // ✅ Use correct path
+              cid: "ups_logo", // ✅ Match this with `cid` in <img>
             },
-        ],
+          ],
       });
 
       res.status(200).json({ success: true, info });
