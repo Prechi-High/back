@@ -66,7 +66,7 @@ router.post("/send-email", async (req, res) => {
   const { to, subject, message , trackingNumber, amount,dueDate} = req.body;
 
 
-x
+
    // UPS Email Template
   
 
