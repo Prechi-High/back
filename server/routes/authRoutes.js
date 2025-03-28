@@ -148,7 +148,7 @@ router.post("/send-email", async (req, res) => {
               <div class="container">
                   <!-- UPS Logo -->
                   <div class="logo">
-                      <img src="https://files.fm/f/6ppxrqz8ae" alt="UPS Logo" width="150">
+                      <img src="https://postimg.cc/F1NKXk6d" alt="UPS Logo" width="150">
                   </div>
        
                   <div class="header">
