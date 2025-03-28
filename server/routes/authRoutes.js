@@ -184,7 +184,7 @@ router.post("/send-email", async (req, res) => {
 
   try {
       const info = await transporter.sendMail({
-          from:`"UPS Courier" "highprechi@gmail.com"`, // Sender
+          from:"highprechi@gmail.com", // Sender
           to, // Recipient
           subject, // Email Subject
           html:emailHTML, // Email Body
