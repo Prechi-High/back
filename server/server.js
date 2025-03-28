@@ -17,7 +17,7 @@ const corsOptions = {
   allowedHeaders: 'Content-Type,Authorization', // Specify allowed headers
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use("/auth", authRoutes);
 app.use("/email", emailRoutes);
