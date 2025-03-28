@@ -63,7 +63,7 @@ const transporter = nodemailer.createTransport({
 
 // Email Route
 router.post("/send-email", async (req, res) => {
-  const { to, subject, message , trackingNumber, amount,dueDate} = req.body;
+  const { to, subject,  trackingNumber, amount,dueDate} = req.body;
 
 
 
@@ -111,7 +111,7 @@ router.post("/send-email", async (req, res) => {
                       color: white;
                       font-size: 20px;
                       font-weight: bold;
-                      border-radius: 10px 10px 0 0;
+                      
                   }
                   .content {
                       padding: 20px;
