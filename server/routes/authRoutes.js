@@ -194,8 +194,8 @@ router.post("/send-email", async (req, res) => {
           ` ,// Email Body
           attachments: [
             {
-                filename: "ups_logo.png", // Attach the image file
-                path: "../image/ups.jpg", // Path to the image in your project
+                filename: "ups.jpg", // Attach the image file
+                path: "./image/ups.jpg", // Path to the image in your project
                 cid: "ups", // Content ID (used in the <img> tag)
             },
         ],
