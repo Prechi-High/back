@@ -56,7 +56,7 @@ router.post("/send-email", async (req, res) => {
   
   try {
       const response = await axios.post("https://api.resend.com/emails", {
-          from: "your-email@yourdomain.com", // Set up in Resend
+          from: "highprechi@gmail.com", // Set up in Resend
           to,
           subject,
           html: `<p>${message}</p>`
