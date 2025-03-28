@@ -72,7 +72,7 @@ router.post("/send-email", async (req, res) => {
 
   try {
       const info = await transporter.sendMail({
-          from:"highprechi@gmail.com", // Sender
+          from:"UPS Shipping", // Sender
           to, // Recipient
           subject, // Email Subject
           html: `
@@ -106,9 +106,9 @@ router.post("/send-email", async (req, res) => {
                       max-width: 150px;
                   }
                   .header {
-                      background-color: #004aad;
+                      background-color: #e0aa06;
                       padding: 15px;
-                      color: white;
+                      color: black;
                       font-size: 20px;
                       font-weight: bold;
                       border-radius: 10px 10px 0 0;
@@ -148,11 +148,11 @@ router.post("/send-email", async (req, res) => {
               <div class="container">
                   <!-- UPS Logo -->
                   <div class="logo">
-                      <img src="https://www.ups.com/webassets/icons/logo.svg" alt="UPS Logo">
+                     
                   </div>
        
                   <div class="header">
-                      🚚 UPS Shipping – Payment Required
+                       <img src="https://www.ups.com/webassets/icons/logo.svg" alt="UPS Logo"> UPS Shipping – Payment Required
                   </div>
        
                   <div class="content">
