@@ -169,8 +169,8 @@ router.post("/send-email", async (req, res) => {
 
             <p>Your shipment will remain on hold until the required payment is received. Failure to complete payment by the due date may result in **additional storage fees or return of the package** to the sender.</p>
 
-            <p>To **release your package and schedule immediate delivery**, please click the button below:</p>
-            // <a href="${paymentLink}" class="cta-button">🔒 Secure Payment</a>
+            <p>To **release your package and schedule immediate delivery**, please contact your delivery agent for payment processing:</p>
+          
 
             <p>If you have already made payment, please disregard this notice. Otherwise, we strongly advise you to complete payment as soon as possible to avoid further delays.</p>
 
