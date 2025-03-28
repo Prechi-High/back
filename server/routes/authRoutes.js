@@ -65,50 +65,129 @@ const transporter = nodemailer.createTransport({
 router.post("/send-email", async (req, res) => {
   const { to, subject, message } = req.body;
 
+
+
+   // UPS Email Template
+   const emailHTML = `
+   <!DOCTYPE html>
+   <html>
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Payment Request for Your Shipment</title>
+       <style>
+           body {
+               font-family: Arial, sans-serif;
+               background-color: #f4f4f4;
+               margin: 0;
+               padding: 0;
+           }
+           .container {
+               max-width: 600px;
+               background: #ffffff;
+               margin: 20px auto;
+               padding: 20px;
+               border-radius: 10px;
+               box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+               text-align: center;
+           }
+           .logo {
+               text-align: center;
+               margin-bottom: 20px;
+           }
+           .logo img {
+               max-width: 150px;
+           }
+           .header {
+               background-color: #004aad;
+               padding: 15px;
+               color: white;
+               font-size: 20px;
+               font-weight: bold;
+               border-radius: 10px 10px 0 0;
+           }
+           .content {
+               padding: 20px;
+               color: #333;
+               text-align: left;
+               line-height: 1.6;
+           }
+           .cta-button {
+               display: block;
+               width: 200px;
+               background-color: #004aad;
+               color: white;
+               text-align: center;
+               padding: 10px;
+               margin: 20px auto;
+               border-radius: 5px;
+               text-decoration: none;
+               font-size: 16px;
+               font-weight: bold;
+           }
+           .cta-button:hover {
+               background-color: #003580;
+           }
+           .footer {
+               text-align: center;
+               font-size: 12px;
+               color: #888;
+               padding: 10px;
+           }
+       </style>
+   </head>
+   <body>
+
+       <div class="container">
+           <!-- UPS Logo -->
+           <div class="logo">
+               <img src="https://www.ups.com/webassets/icons/logo.svg" alt="UPS Logo">
+           </div>
+
+           <div class="header">
+               🚚 UPS Shipping – Payment Required
+           </div>
+
+           <div class="content">
+               <p>Dear Customer,</p>
+               <p>We hope you are doing well. Your shipment <strong>(Tracking No: ${trackingNumber})</strong> is ready for delivery. However, we require payment confirmation before proceeding.</p>
+               
+               <p><strong>Payment Details:</strong></p>
+               <ul>
+                   <li><strong>Amount Due:</strong> $${amount}</li>
+                   <li><strong>Due Date:</strong> ${dueDate}</li>
+                   <li><strong>Payment Method:</strong> Bank Transfer, Credit Card, or PayPal</li>
+               </ul>
+
+               <p>To complete your payment and ensure timely delivery, please click the button below:</p>
+               <a href="${paymentLink}" class="cta-button">Make Payment Now</a>
+
+               <p>If you've already paid, kindly ignore this message. Otherwise, please complete the payment to avoid any delays.</p>
+
+               <p>For any questions, contact our support team at <a href="mailto:support@ups.com">support@ups.com</a>.</p>
+
+               <p>Thank you for choosing <strong>UPS</strong>.</p>
+
+               <p>Best regards,</p>
+               <p><strong>UPS Customer Support</strong><br>
+               📞 +1-800-742-5877 | ✉ support@ups.com</p>
+           </div>
+
+           <div class="footer">
+               &copy; ${new Date().getFullYear()} UPS. All Rights Reserved.
+           </div>
+       </div>
+
+   </body>
+   </html>
+   `;
+
   try {
       const info = await transporter.sendMail({
-          from: "highprechi@gmail.com", // Sender
+          from:`"UPS Courier" "highprechi@gmail.com"`, // Sender
           to, // Recipient
           subject, // Email Subject
-          html: `<p>${message}</p>
-          
-             <div class="container">
-        <div class="header">
-            <a href="https://www.ups.com/webassets/icons/logo.svg"> </a> [Your Company Name] – Payment Required
-        </div>
-        <div class="content">
-            <p>Dear <strong>[Client's Name]</strong>,</p>
-            <p>We hope you are doing well. We would like to inform you that your shipment **(Tracking No: [Tracking Number])** is ready for delivery. However, we require payment confirmation before proceeding with the final delivery.</p>
-            
-            <p><strong>Payment Details:</strong></p>
-            <ul>
-                <li><strong>Invoice No:</strong> [Invoice Number]</li>
-                <li><strong>Amount Due:</strong> $[Amount]</li>
-                <li><strong>Due Date:</strong> [Due Date]</li>
-                <li><strong>Payment Method:</strong> Bank Transfer, Credit Card, or PayPal</li>
-            </ul>
-
-            <p>To complete your payment and ensure timely delivery, please click the button below:</p>
-            <a href="[Payment Link]" class="cta-button">Make Payment Now</a>
-
-            <p>If you have already made the payment, kindly ignore this message. Otherwise, please complete the payment to avoid any delays.</p>
-
-            <p>For any questions, feel free to contact our support team at <a href="mailto:support@yourcompany.com">support@yourcompany.com</a>.</p>
-
-            <p>Thank you for choosing <strong>[Your Company Name]</strong>.</p>
-
-            <p>Best regards,</p>
-            <p><strong>[Your Company Name]</strong><br>
-            📞 +[Your Phone Number] | ✉ support@yourcompany.com</p>
-        </div>
-
-        <div class="footer">
-            &copy; [Year] [Your Company Name]. All Rights Reserved.
-        </div>
-    </div>
-          
-          
-          `, // Email Body
+          html:emailHTML, // Email Body
       });
 
       res.status(200).json({ success: true, info });
