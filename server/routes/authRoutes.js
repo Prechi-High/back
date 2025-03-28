@@ -2,6 +2,7 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import axios from "axios";
 
 const router = express.Router();
 const SECRET_KEY = "your_secret_key";
